@@ -147,7 +147,7 @@ ap.get("/platos-no-vigentes", rpg.multiSQL({
 //posrt = 5417 -> localhost:5417/
 //si conecta desde servidor del grupo
 //poner port = 80 -> http://cc3201.dcc.uchile.cl/grupo17/
-var port = 5417
+var port = 80;
 var server = require("http").createServer(ap);
 server.listen(port,function(){
     console.log("server running...");
