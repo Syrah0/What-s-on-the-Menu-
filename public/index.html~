@@ -87,7 +87,6 @@
 		<button onclick="ftest()">Nombres platos</button>
 		<button onclick="fRestaurantConPlato()">Restaurante con tal plato</button>		
 		<ul id="mi-lista"></ul>
-		<button onclick="console.log('hola')">Hola</button>
 		</aside>
 		<footer id="pie">
 		Derechos Reservados &copy; 2010-2011
