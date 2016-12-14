@@ -67,7 +67,7 @@
       <!--   Icon Section   -->
       <div class="row">
          <div  class="col s12">
-            <h2 class="center header text_h2">Aquí podrás conocer cosas interesantes sobre <span class="span_h2">comida</span >, solotienes que consultar.</h2>
+            <h2 class="center header text_h2">Aquí podrás conocer cosas interesantes sobre <span class="span_h2">comida</span >, solo   tienes que consultar.</h2>
          </div>
          <div  class="col s12 m4 l4">
            <div class="center promo promo-example">
@@ -113,7 +113,7 @@
       </table>
 
       <div class="back1" hidden>
-          <button id="back" onclick="back()" type="button" name="button"> Atrás </button>
+        <button id="back" onclick="backSimple('.Boton1','.back1','#my-table1')" type="button" name="button"> Atrás </button>
       </div>
     </div>
   </div>
@@ -125,7 +125,7 @@
 
       <!-- <div class="ind"> -->
        <div class="Boton2">
-            <button onclick="return showQ1('.Boton2','.Consulta2','.back2')" id="handle1" type="button">Haga su consulta</button>
+            <button onclick="return showForm('.Boton2','.Consulta2','.back2')" id="handle1" type="button">Haga su consulta</button>
        </div>
        <div class="Consulta2" hidden>
          <form>
@@ -141,7 +141,7 @@
          </tbody>
        </table>
         <div class="back2" hidden>
-          <button id="back" onclick="back()" type="button">Atrás </button>
+          <button id="back" onclick="backForm('.Boton2','.Consulta2','.back2', '#my-table2')" type="button">Atrás </button>
        </div>  
     </div>
     <!--</div>-->

@@ -28,7 +28,7 @@ function ftest(){
 //##################### 2 y 3 ####################################
 //funcion solo hace consulta
 function fTop10PlatosRestaurant(){
-	$(".Boton1").slideUp();
+	//$(".Boton1").slideUp();
 	$.get("top10-platos-vigentes-restaurant",function(data){
 		console.log(data);
 
@@ -42,8 +42,10 @@ function fTop10PlatosRestaurant(){
 		}
 		builder += "";
 		$("#my-table1").html(builder);
+		
 	});
-	$(".back1").slideDown();
+	//$(".back1").slideDown();
+	showSimple('.Boton1', '.back1');
 	console.log("Llega a query uno");
 }
 
@@ -102,28 +104,36 @@ function fLugaresConPlato(){
 	}
 }
 
-function showQ1() {
-	back();
-  	//console.log("Llega a query dos");
-  	$(".Boton2").slideUp();
-  	$(".Consulta2").slideDown();
-  	$(".back2").slideDown();
-}
-
-function showForm(buttonQuery, formQuery, buttonBack) {
-	back();
+function showSimple(buttonQuery, buttonBack) {
+	//back();
   	//console.log("Llega a query dos");
   	$(buttonQuery).slideUp();
-  	$(inputQuery).slideDown();
+
   	$(buttonBack).slideDown();
 }
 
-function backForm(buttonQuery){
-	$(".Boton1").slideDown();
-	$(".back1").slideUp();
-	$(".Consulta2").slideUp();
+function showForm(buttonQuery, formQuery, buttonBack) {
+	//back();
+  	//console.log("Llega a query dos");
+  	$(buttonQuery).slideUp();
+  	$(formQuery).slideDown();
+  	$(buttonBack).slideDown();
+}
+
+function backSimple(buttonQuery, buttonBack, createdTable){
+	$(buttonQuery).slideDown();	
+
+	$(buttonBack).slideUp();
+
+	$(createdTable).html("");
+}
+
+function backForm(buttonQuery, formQuery, buttonBack, createdTable){
+	$(buttonQuery).slideDown();	
+	$(formQuery).slideUp();
+	$(buttonBack).slideUp();
 	
-	$("#mi-lista").html("");
+	$(createdTable).html("");
 }
 
 
@@ -144,8 +154,8 @@ function back() {
   	$(".Boton2").slideDown();
   	//$('#submissions').slideUp();
   	//$('#results_table').slideUp();
-  	resetConsulta1();
-	  resetConsulta2();
+  	//resetConsulta1();
+	//resetConsulta2();
 }
 
 
