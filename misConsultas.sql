@@ -74,7 +74,7 @@ SELECT DISTINCT name
 	ORDER BY name ASC
 	LIMIT 10;
 
-SELECT DISTINCT name FROM dish Where id IN (SELECT dish_id FROM MenuItem WHERE menu_page_id IN (SELECT id FROM menuPage WHERE menu_id IN (SELECT id FROM menu WHERE place = $1)))ORDER BY name ASC LIMIT 10;
+SELECT DISTINCT name FROM dish Where id IN (SELECT dish_id FROM MenuItem WHERE menu_page_id IN (SELECT id FROM menuPage WHERE menu_id IN (SELECT id FROM menu WHERE place LIKE '%YORK%' )))ORDER BY name ASC LIMIT 10;
 
 #Que platos se sirven para cierta ocasion especial:
 #MENU: occasion -> ID MENU -> ID PAGE -> ID DISH -> NOMBRE
