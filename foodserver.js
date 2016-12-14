@@ -28,9 +28,9 @@ ap.get("/peores-platos",rpg.multiSQL({
 //platos que contienen un nombre dado (como substring)
 ap.post("/nombre-platos",rpg.multiSQL({
     dbcon: conString,
-    postReqData: ["name"], // : ["a","b"]
+    postReqData: ["name"],
     sql: "select id, name from dish where name like $1 limit 10",
-    sqlParams: [rpg.sqlParam("post","name")] // : [rpg.sqlParam("post","a"), rpg.sqlParam("post","b")]
+    sqlParams: [rpg.sqlParam("post","name")]
 }));
 
 //##################### 2 ####################################
@@ -38,7 +38,7 @@ ap.post("/nombre-platos",rpg.multiSQL({
 //los 10 restaurant que tienen mas platos
 ap.get("/top10-platos-restaurant",rpg.multiSQL({
     dbcon: conString,
-    sql: "select * from amountdishesmat LIMIT 10;"
+    sql: "SELECT COUNT(*) as platos, sponsor FROM (SELECT sponsor, T3.dish_id FROM MenuItem T3, (SELECT T2.id, sponsor FROM Menu T1, MenuPage T2 WHERE T2.menu_id = T1.id AND T1.sponsor <> '' AND T1.sponsor <> '?') AS T WHERE T3.menu_page_id = T.id) AS T4 GROUP BY sponsor ORDER BY platos desc, sponsor limit 10;"
 }));
 
 //##################### 3 ####################################
@@ -46,7 +46,7 @@ ap.get("/top10-platos-restaurant",rpg.multiSQL({
 //los 10 restaurant que tienen mas platos vigentes
 ap.get("/top10-platos-vigentes-restaurant",rpg.multiSQL({
     dbcon: conString,
-    sql: "select * from actualdishesmat;"
+    sql: "SELECT COUNT(*) platos, sponsor FROM Menu WHERE sponsor<>'' AND id IN (SELECT menu_id FROM menuPage WHERE id IN (SELECT menu_page_id FROM MenuItem WHERE dish_id IN (SELECT id FROM dish WHERE last_appeared>=2016))) GROUP BY sponsor ORDER BY platos DESC LIMIT 10;"
 }));
 
 //##################### 4 ####################################
@@ -55,96 +55,33 @@ ap.get("/top10-platos-vigentes-restaurant",rpg.multiSQL({
 ap.post("/restaurant-con-plato",rpg.multiSQL({
     dbcon: conString,
     postReqData: ["name"],
-    sql: "select distinct sponsor from dishrelationmat where LOWER(name) LIKE LOWER($1) AND sponsor<>'?' LIMIT 10;",
+    sql: "SELECT DISTINCT sponsor FROM menu WHERE sponsor <> '?' AND id IN (SELECT menu_id FROM menuPage WHERE id IN (SELECT menu_page_id FROM MenuItem WHERE dish_id IN (SELECT id FROM dish WHERE name LIKE $1))) ORDER BY sponsor limit 30;",
     sqlParams: [rpg.sqlParam("post","name")]
 }));
 
 //##################### 5 ####################################
 //no esta testeada
 //consulta que pide datos:
-//platos que se sirven en cierto lugar
+//lugares que contienen un *plato* dado (como substring)
 ap.post("/lugares-con-plato",rpg.multiSQL({
     dbcon: conString,
     postReqData: ["place"],
-    sql: "select distinct name from dishrelationmat where LOWER(place) LIKE LOWER($1) LIMIT 10;",
+    sql: "SELECT DISTINCT name FROM dish Where id IN (SELECT dish_id FROM MenuItem WHERE menu_page_id IN (SELECT id FROM menuPage WHERE menu_id IN (SELECT id FROM menu WHERE place = $1))) ORDER BY name ASC LIMIT 10;",
     sqlParams: [rpg.sqlParam("post","place")]
 }));
 
 //##################### 6 ####################################
-//platos que se sirven para alguna ocasion especial
-ap.post("/Platos-para-ocasion", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["occasion"],
-    sql: "select distinct name from dishrelationmat where LOWER(occasion) LIKE LOWER($1);", 
-    sqlParams: [rpg.sqlParam("post","occasion")]
-}));
+//en proceso
 
 //##################### 7 ####################################
-//platos que se sirven para algun evento
-ap.post("/Platos-para-evento", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["event"],
-    sql: "select distinct name from dishrelationmat where LOWER(event) LIKE LOWER($1);", 
-    sqlParams: [rpg.sqlParam("post","event")]
-}));
 
-//##################### 8 ####################################
-//platos que se sirven para algun evento y ocasion especial
-ap.post("/Platos-para-evento-con-ocasion", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["event","occasion"],
-    sql: "select distinct name from dishrelationmat where LOWER(event) LIKE LOWER($1) and LOWER(occasion) LIKE LOWER($2);", 
-    sqlParams: [rpg.sqlParam("post","event"),rpg.sqlParam("post","occasion")],
-}));
 
-//##################### 9 ####################################
-//platos mas caros para un lugar dado
-ap.post("/Platos-mas-caros-por-lugar", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["place"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(place) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;", 
-    sqlParams: [rpg.sqlParam("post","place")]
-}));
-
-//##################### 10 ####################################
-//platos mas caros de un restaurant
-ap.post("/Platos-mas-caros-por-restaurant", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["sponsor"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(sponsor) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;", 
-    sqlParams: [rpg.sqlParam("post","sponsor")]
-}));
-
-//##################### 11 ####################################
-//platos mas caros para un evento
-ap.post("/Platos-mas-caros-para-evento", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["event"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(event) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;", 
-    sqlParams: [rpg.sqlParam("post","event")]
-}));
-
-//##################### 12 ####################################
-//platos dentro de rango de precio dado
-ap.post("/Platos-por-rango-de-precioss", rpg.multiSQL({
-    dbcon: conString,
-    postReqData: ["low_price","high_price"],
-    sql: "select distinct sponsor from dishrelationmat where highest_price BETWEEN $1 AND $2;", 
-    sqlParams: [rpg.sqlParam("post","low_price"),rpg.sqlParam("post","high_price")]
-}));
-
-//##################### 13 ####################################
-//platos no vigentes desde la ultima decada
-ap.get("/Platos-no-vigentes", rpg.multiSQL({
-    dbcon: conString,
-    sql: "select * from platosnovigentesmat;"
-}));
 
 //port = 80 -> localhost/
 //posrt = 5417 -> localhost:5417/
 //si conecta desde servidor del grupo
 //poner port = 80 -> http://cc3201.dcc.uchile.cl/grupo17/
-var port = 80
+var port = 5417
 var server = require("http").createServer(ap);
 server.listen(port,function(){
     console.log("server running...");
