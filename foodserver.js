@@ -29,7 +29,7 @@ ap.get("/peores-platos",rpg.multiSQL({
 ap.post("/nombre-platos",rpg.multiSQL({
     dbcon: conString,
     postReqData: ["name"], // : ["a","b"]
-    sql: "select id, name from dish where name like $1 limit 10;",
+    sql: "select id, name from wotm.dish where name like $1 limit 30;",
     sqlParams: [rpg.sqlParam("post","name")] // : [rpg.sqlParam("post","a"), rpg.sqlParam("post","b")]
 }));
 
@@ -38,7 +38,7 @@ ap.post("/nombre-platos",rpg.multiSQL({
 //los 10 restaurant que tienen mas platos
 ap.get("/top10-platos-restaurant",rpg.multiSQL({
     dbcon: conString,
-    sql: "select * from amountdishesmat LIMIT 10;"
+    sql: "select count(*) platos, sponsor from (select sponsor, T3.dish_id from wotm.MenuItem T3, (select T2.id, sponsor from wotm.Menu T1, wotm.MenuPage T2 where T2.menu_id = T1.id and T1.sponsor <> '' and T1.sponsor <>'?') AS T where T3.menu_page_id = T.id) AS T4 group by sponsor order by sponsor,platos limit 10;"
 }));
 
 //##################### 3 ####################################
@@ -46,7 +46,7 @@ ap.get("/top10-platos-restaurant",rpg.multiSQL({
 //los 10 restaurant que tienen mas platos vigentes
 ap.get("/top10-platos-vigentes-restaurant",rpg.multiSQL({
     dbcon: conString,
-    sql: "select * from actualdishesmat;"
+    sql: "select count(*) platos, sponsor from wotm.Menu where sponsor<>'' and id in (select menu_id from wotm.menuPage where id in (select menu_page_id from wotm.MenuItem where dish_id in (select id from wotm.dish where last_appeared>=2016))) group by sponsor order by platos desc limit 10;"p
 }));
 
 //##################### 4 ####################################
@@ -55,7 +55,7 @@ ap.get("/top10-platos-vigentes-restaurant",rpg.multiSQL({
 ap.post("/restaurant-con-plato",rpg.multiSQL({
     dbcon: conString,
     postReqData: ["name"],
-    sql: "select distinct sponsor, name from dishrelationmat where LOWER(name) LIKE LOWER($1) AND sponsor<>'?' LIMIT 10;",
+    sql: "select distinct sponsor, name from wotm.dishrelation where LOWER(name) LIKE LOWER($1) AND sponsor<>'?' LIMIT 30;",
     sqlParams: [rpg.sqlParam("post","name")]
 }));
 
@@ -66,7 +66,7 @@ ap.post("/restaurant-con-plato",rpg.multiSQL({
 ap.post("/lugares-con-plato",rpg.multiSQL({
     dbcon: conString,
     postReqData: ["place"],
-    sql: "select distinct name from dishrelationmat where LOWER(place) LIKE LOWER($1) LIMIT 10;",
+    sql: "select distinct name from wotm.dishrelation where LOWER(place) LIKE LOWER($1) LIMIT 30;",
     sqlParams: [rpg.sqlParam("post","place")]
 }));
 
@@ -76,7 +76,7 @@ ap.post("/lugares-con-plato",rpg.multiSQL({
 ap.post("/platos-para-ocasion", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["occasion"],
-    sql: "select distinct name from dishrelationmat where LOWER(occasion) LIKE LOWER($1);", 
+    sql: "select distinct name from wotm.dishrelation where LOWER(occasion) LIKE LOWER($1) LIMIT 30", 
     sqlParams: [rpg.sqlParam("post","occasion")]
 }));
 
@@ -85,7 +85,7 @@ ap.post("/platos-para-ocasion", rpg.multiSQL({
 ap.post("/platos-para-evento", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["event"],
-    sql: "select distinct name from dishrelationmat where LOWER(event) LIKE LOWER($1);", 
+    sql: "select distinct name from wotm.dishrelation where LOWER(event) LIKE LOWER($1) LIMIT 30;", 
     sqlParams: [rpg.sqlParam("post","event")]
 }));
 
@@ -94,7 +94,7 @@ ap.post("/platos-para-evento", rpg.multiSQL({
 ap.post("/platos-para-evento-con-ocasion", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["event","occasion"],
-    sql: "select distinct name from dishrelationmat where LOWER(event) LIKE LOWER($1) and LOWER(occasion) LIKE LOWER($2);",
+    sql: "select distinct name from wotm.dishrelation where LOWER(event) LIKE LOWER($1) and LOWER(occasion) LIKE LOWER($2) LIMIT 30;",
     sqlParams: [rpg.sqlParam("post","event"),rpg.sqlParam("post","occasion")],
 }));
 
@@ -103,7 +103,7 @@ ap.post("/platos-para-evento-con-ocasion", rpg.multiSQL({
 ap.post("/platos-mas-caros-por-lugar", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["place"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(place) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
+    sql: "select distinct name,highest_price from wotm.dishrelation where lower(place) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
     sqlParams: [rpg.sqlParam("post","place")]
 }));
 
@@ -112,7 +112,7 @@ ap.post("/platos-mas-caros-por-lugar", rpg.multiSQL({
 ap.post("/platos-mas-caros-por-restaurant", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["sponsor"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(sponsor) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
+    sql: "select distinct name,highest_price from wotm.dishrelation where lower(sponsor) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
     sqlParams: [rpg.sqlParam("post","sponsor")]
 }));
 
@@ -121,7 +121,7 @@ ap.post("/platos-mas-caros-por-restaurant", rpg.multiSQL({
 ap.post("/platos-mas-caros-para-evento", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["event"],
-    sql: "select distinct name,highest_price from dishrelationmat where lower(event) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
+    sql: "select distinct name,highest_price from wotm.dishrelation where lower(event) LIKE lower($1) AND highest_price>0 ORDER BY highest_price DESC LIMIT 5;",
     sqlParams: [rpg.sqlParam("post","event")]
 }));
  
@@ -130,7 +130,7 @@ ap.post("/platos-mas-caros-para-evento", rpg.multiSQL({
 ap.post("/restaurant-por-rango-de-precios", rpg.multiSQL({
     dbcon: conString,
     postReqData: ["low_price","high_price"],
-    sql: "select distinct sponsor from dishrelationmat where highest_price BETWEEN $1 AND $2;",
+    sql: "select distinct sponsor from wotm.dishrelation where highest_price BETWEEN $1 AND $2 LIMIT 30;",
     sqlParams: [rpg.sqlParam("post","low_price"),rpg.sqlParam("post","high_price")]
 }));
  
@@ -138,7 +138,7 @@ ap.post("/restaurant-por-rango-de-precios", rpg.multiSQL({
 //platos no vigentes desde la ultima decada
 ap.get("/platos-no-vigentes", rpg.multiSQL({
     dbcon: conString,
-    sql: "select distinct name, last_appeared from dish where last_appeared <> 0 AND last_appeared<2006 ORDER BY last_appeared DESC;"
+    sql: "select distinct name, last_appeared from wotm.dish where last_appeared <> 0 AND last_appeared<2006 ORDER BY last_appeared DESC LIMIT 50;"
 }));
 
 

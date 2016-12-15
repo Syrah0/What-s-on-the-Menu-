@@ -32,17 +32,11 @@
           <div class="nav-wrapper"><a id="logo-container" href="#top" class="brand-logo">What's on the menu?</a>
             <ul id="nav-mobile" class="right side-nav">
               <li><a href="#intro">Servicio</a></li>
-              <li><a href="#consulta1">Consulta 1</a></li>
-              <li><a href="#consulta2">Consulta 2</a></li>
-              <li><a href="#consulta3">Consulta 3</a></li>
-              <li><a href="#consulta4">Consulta 4</a></li>
-              <li><a href="#consulta5">Consulta 5</a></li>
-              <li><a href="#consulta6">Consulta 6</a></li>
-              <li><a href="#consulta7">Consulta 7</a></li>
-              <li><a href="#consulta8">Consulta 8</a></li>
-              <li><a href="#consulta9">Consulta 9</a></li>
-              <li><a href="#consulta10">Consulta 10</a></li>
-              <li><a href="#consulta11">Consulta 11</a></li>
+              <li><a href="#sobrePlatos">Platos</a></li>
+              <li><a href="#sobreEspeciales">Eventos</a></li>
+              <li><a href="#sobreOcasiones">Ocasiones</a></li>
+              <li><a href="#sobreRestaurant">Restaurant</a></li>
+              <li><a href="#sobreLugares">Lugares</a></li>
               <li><a href="#contact">Sobre nosotros</a></li>              
               <!-- <li><a href="#test">Test</a></li> -->
                <!-- <li><a href="#" target="_blank">Free Download</a></li> -->
@@ -82,14 +76,14 @@
            <div class="center promo promo-example"> 
                <i class="mdi-maps-local-restaurant"></i><!--mdi-maps-local-bar-->
                <h5 class="promo-caption">Consultas sobre restaurantes</h5>
-                <p class="light center">Hay consultas para saber datos sobre distintos restaurantes a lo largo del mundo. Tambiénestadisticas sobre estos restauntes. </p>
+                <p class="light center">Hay consultas para saber datos sobre distintos restaurantes a lo largo del mundo. También estadisticas sobre estos restauntes. </p>
            </div>
          </div>
          <div class="col s12 m4 l4">
              <div class="center promo promo-example">
-               <i class="mdi-maps-local-pizza"></i><!--mdi-maps-local-convenience-store -->
-               <h5 class="promo-caption">Consultas sobre menus de platos</h5>
-                <p class="light center">Cada restaurante tiene sus propios menus, los cuales contienen platos especificos. Cada plato estaidentificado por un numero de id.</p>
+               <i class="mdi-social-group"></i><!--mdi-maps-local-convenience-store, mdi-maps-local-pizza-->
+               <h5 class="promo-caption">Consultas sobre ocasiones y eventos</h5>
+                <p class="light center">Existen platos especiales para ciertos eventos y ocasiones. Podrias ver que platos son para comer diaramente o cuales son ideales para un aniversario.</p>
              </div>
          </div>
          <div class="col s12 m4 l4">
@@ -104,9 +98,9 @@
   </div>
 
 
-  <div class="section scrollspy" id="consulta1">
+  <div class="section scrollspy" id="sobrePlatos"> <!-- id="consulta1" -->
     <div class="container">
-      <h4 class="header text_b"> Top 10 cantidad de platos </h4>
+      <h4 class="header text_b"> 1. Top 10 cantidad de platos </h4>
       <p> A continuación se presenta una consulta simple 
             sobre la <strong>cantidad de platos</strong> que posee cada restaunt.
             Se eligieron los 10 con mayor cantidad, considerando solo platos aún disponibles desde 2016.</p>        
@@ -127,68 +121,122 @@
     </div>
   </div>
 
-  <div class="section scrollspy" id="consulta2">
+  <div class="section scrollspy" id="consulta12"> 
     <div class="container">
-      <h4 class="header text_b"> Restaurantes con un plato especifico </h4>    
-      <p> Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
+      <h4 class="header text_b"> 2. Búsqueda de platos </h4>    
+      <p> Si estás buscando el <strong>nombre</strong> de un plato en especifico, podemos buscar platos parecidos a lo que buscas. Puedes ingresar un palabra en inglés (como fish o pizza) y se mostraran los platos que contengan esa palabra. </p>
 
       <!-- <div class="ind"> -->
-       <div class="Boton2">
-            <button onclick="return showForm('.Boton2','.Consulta2','.back2')" id="handle2" type="button">Haga su consulta</button>
+       <div class="Boton12">
+            <button onclick="return showForm('.Boton12','.Consulta12','.back12')" id="handle12" type="button">Haga su consulta</button>
        </div>
-       <div class="Consulta2" hidden>
+       <div class="Consulta12" hidden>
          <form>
-           Ingrese el nombre de un plato
-           <input type="text" id="plato2">            
+           Ingrese el nombre de un plato:
+           <input type="text" id="plato12">            
          </form>
-         <button onclick="fRestaurantConPlato()">Consultar</button>
+         <button onclick="fNombrePlatos()">Consultar</button>
        </div>    
        <!-- <input type="text" id="plato2"> -->
        <table class="overflow-y">
          <tbody>
-           <ul id="my-table2"></ul>
+           <ul id="my-table12"></ul>
          </tbody>
        </table>
-        <div class="back2" hidden>
-          <button id="back" onclick="backForm('.Boton2','.Consulta2','.back2', '#my-table2')" type="button">Atrás </button>
+        <div class="back12" hidden>
+          <button id="back" onclick="backForm('.Boton12','.Consulta12','.back12', '#my-table12')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>  
+
+  <div class="section scrollspy" id="consulta11">
+    <div class="container">
+      <h4 class="header text_b">3. Platos que ya no están vigentes </h4>
+      <p> Existen varios platos que en el pasado deleitaron el paladar de millones de personas a lo largo del mundo. Aqui te mostramos algunos platos que ya no están <strong>vigentes</strong>.
+            Se eligieron los 10 con mayor cantidad, considerando solo platos aún disponibles desde 2016.</p>        
+      <!-- <blockquote>Consultas de Estadisticas</blockquote> -->
+      <div class="Boton11">
+        <button onclick="fplatosNoVigentes()">Consulte aquí.</button>
+      </div>
+      
+      <table class="overflow-y">
+        <tbody>
+          <ul id="my-table11"></ul>
+        </tbody>
+      </table>
+
+      <div class="back11" hidden>
+        <button id="back" onclick="backSimple('.Boton11','.back11','#my-table11')" type="button" name="button"> Atrás </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section scrollspy" id="sobreEspeciales"> <!-- id="consulta5" -->
+    <div class="container">
+      <h4 class="header text_b">4. Platos para un evento especial </h4>    
+      <p> Acá podrás consultar sobre esos platos que son perfectos para ciertos <strong>eventos</strong> particulares. Ten cuidado porque los eventos válidos se reciben en inglés. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton5">
+            <button onclick="return showForm('.Boton5','.Consulta5','.back5')" id="handle5" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta5" hidden>
+         <form>
+           Ingrese el nombre de un evento:
+           <input type="text" id="plato5">            
+         </form>
+         <button onclick="fplatosParaEvento()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table5"></ul>
+         </tbody>
+       </table>
+        <div class="back5" hidden>
+          <button id="back" onclick="backForm('.Boton5','.Consulta5','.back5', '#my-table5')" type="button">Atrás </button>
        </div>  
     </div>
     <!--</div>-->
   </div>
 
-  <div class="section scrollspy" id="consulta3">
+
+  <div class="section scrollspy" id="consulta9">
     <div class="container">
-      <h4 class="header text_b"> Lugares con un plato especifico </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
+      <h4 class="header text_b">5. Top 5 de platos más caros de un evento </h4>    
+      <p> Si no te es suficiente con tener los platos ideales para algún evento, aqui te traemos el top 5 de los platos <strong>más caros</strong> del <strong>evento</strong> que te interesa. </p>
 
       <!-- <div class="ind"> -->
-       <div class="Boton3">
-            <button onclick="return showForm('.Boton3','.Consulta3','.back3')" id="handle3" type="button">Haga su consulta</button>
+       <div class="Boton9">
+            <button onclick="showForm('.Boton9','.Consulta9','.back9')" id="handle9" type="button">Haga su consulta</button>
        </div>
-       <div class="Consulta3" hidden>
+       <div class="Consulta8" hidden>
          <form>
-           Ingrese el nombre de un plato
-           <input type="text" id="plato3">            
+           Ingrese el nombre de un evento:
+           <input type="text" id="plato9">            
          </form>
-         <button onclick="fLugaresConPlato()">Consultar</button>
+         <button onclick="fplatosMasCarosPorEvento()">Consultar</button>
        </div>    
        <!-- <input type="text" id="plato2"> -->
        <table class="overflow-y">
          <tbody>
-           <ul id="my-table3"></ul>
+           <ul id="my-table9"></ul>
          </tbody>
        </table>
-        <div class="back3" hidden>
-          <button id="back" onclick="backForm('.Boton3','.Consulta3','.back3', '#my-table3')" type="button">Atrás </button>
+        <div class="back9" hidden>
+          <button id="back" onclick="backForm('.Boton9','.Consulta9','.back9', '#my-table9')" type="button">Atrás </button>
        </div>  
     </div>
     <!--</div>-->
   </div>
 
-  <div class="section scrollspy" id="consulta4">
+
+  <div class="section scrollspy" id="sobreOcasiones"> <!--id="consulta4" -->
     <div class="container">
-      <h4 class="header text_b"> Platos para una ocasión especial </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
+      <h4 class="header text_b">6. Platos para una ocasión especial </h4>    
+      <p> Si eres de esas personas que se fija en los pequeños detalles de la vida, sobre todo con la comida, aquì puedes buscar los platos para tu <strong>ocasión</strong> especial, aprovecha de sorprenderlos a todos (ocasiones ingresadas en inglés). </p>
 
       <!-- <div class="ind"> -->
        <div class="Boton4">
@@ -214,39 +262,10 @@
     <!--</div>-->
   </div>
 
-  <div class="section scrollspy" id="consulta5">
-    <div class="container">
-      <h4 class="header text_b"> Platos para un evento especial </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
-
-      <!-- <div class="ind"> -->
-       <div class="Boton5">
-            <button onclick="return showForm('.Boton5','.Consulta5','.back5')" id="handle5" type="button">Haga su consulta</button>
-       </div>
-       <div class="Consulta5" hidden>
-         <form>
-           Ingrese el nombre de un evento
-           <input type="text" id="plato5">            
-         </form>
-         <button onclick="fplatosParaEvento()">Consultar</button>
-       </div>    
-       <!-- <input type="text" id="plato2"> -->
-       <table class="overflow-y">
-         <tbody>
-           <ul id="my-table5"></ul>
-         </tbody>
-       </table>
-        <div class="back5" hidden>
-          <button id="back" onclick="backForm('.Boton5','.Consulta5','.back5', '#my-table5')" type="button">Atrás </button>
-       </div>  
-    </div>
-    <!--</div>-->
-  </div>
-
   <div class="section scrollspy" id="consulta6">
     <div class="container">
-      <h4 class="header text_b"> Platos para un evento con una ocasion especial </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
+      <h4 class="header text_b">7. Platos para un evento con una ocasion especial </h4>    
+      <p> Si no conformas lo entregado sobre eventos, ahora puedes ir más allá en la organización de eventos consultando sobre los mejores platos para tu <strong>evento con ocasión especial</strong>. ¡Qué mejor para ser el alma de la fiesta! </p>
 
       <!-- <div class="ind"> -->
        <div class="Boton6">
@@ -254,9 +273,9 @@
        </div>
        <div class="Consulta6" hidden>
          <form>
-           Ingrese el nombre de un evento
+           Ingrese el nombre de un evento:
            <input type="text" id="plato6a">
-           Ingrese el nombre de una ocasion
+           Ingrese el nombre de una ocasion:
            <input type="text" id="plato6b">
          </form>
          <button onclick="fplatosParaEventoConOcasion()">Consultar</button>
@@ -274,10 +293,131 @@
     <!--</div>-->
   </div>
 
+
+  <div class="section scrollspy" id="sobreRestaurant"> <!-- id="consulta2"-->
+    <div class="container">
+      <h4 class="header text_b">8. Restaurantes con un plato especifico </h4>    
+      <p> Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Siempre es bueno saber donde tienen tu plato preferido. Considerar que se muestran los platos parecidos al buscado. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton2">
+            <button onclick="return showForm('.Boton2','.Consulta2','.back2')" id="handle2" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta2" hidden>
+         <form>
+           Ingrese el nombre de un plato:
+           <input type="text" id="plato2">            
+         </form>
+         <button onclick="fRestaurantConPlato()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table2"></ul>
+         </tbody>
+       </table>
+        <div class="back2" hidden>
+          <button id="back" onclick="backForm('.Boton2','.Consulta2','.back2', '#my-table2')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="consulta8">
+    <div class="container">
+      <h4 class="header text_b">9. Top 5 de platos más caros de un restaurant </h4>    
+      <p> Para el amigo o amiga que recién recibìó su paga del mes. Aproveche de proponerle ir a comer a un restaurante y pedir uno de los <strong>5 platos más caros</strong> de su lugar preferido, después de todo la amistad no tiene precio. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton8">
+            <button onclick="return showForm('.Boton8','.Consulta8','.back8')" id="handle8" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta8" hidden>
+         <form>
+           Ingrese el nombre de un restaurant:
+           <input type="text" id="plato8">            
+         </form>
+         <button onclick="fplatosMasCarosPorRestaurant()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table8"></ul>
+         </tbody>
+       </table>
+        <div class="back8" hidden>
+          <button id="back" onclick="backForm('.Boton8','.Consulta8','.back8', '#my-table8')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+    <div class="section scrollspy" id="consulta10">
+    <div class="container">
+      <h4 class="header text_b">10. Restaurantes con platos entre un rango de precios </h4>    
+      <p> Ideal para ese otro amigo o amiga que siempre llega a fin de mes con lo justo. Para los amantes de la cotización, puede consultar aquí los restaurantes que tienen platos en un <strong>rango de precios</strong> que sea de su agrado. Más vale prevenir que lamentar, sobre todo si hay comida en juego. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton10">
+            <button onclick="return showForm('.Boton10','.Consulta10','.back10')" id="handle6" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta10" hidden>
+         <form>
+           Ingrese el precio mínimo:
+           <input type="text" id="plato10a">
+           Ingrese el precio máximo:
+           <input type="text" id="plato10b">
+         </form>
+         <button onclick="frestaurantesConPreciosPorRango()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table10"></ul>
+         </tbody>
+       </table>
+        <div class="back10" hidden>
+          <button id="back" onclick="backForm('.Boton10','.Consulta10','.back10', '#my-table10')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+  <div class="section scrollspy" id="sobreLugares"> <!-- id="consulta3" -->
+    <div class="container">
+      <h4 class="header text_b">11. Lugares con un plato especifico </h4>    
+      <p> Consulta perfecta para los trotamundos amantes de la comida. Aquí puedes consultar sobre los <strong>lugares</strong> que venden ese plato que más disfrutas cuando estas de paseo. ¡Que no se diga más y a buscar los mejores lugares! </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton3">
+            <button onclick="return showForm('.Boton3','.Consulta3','.back3')" id="handle3" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta3" hidden>
+         <form>
+           Ingrese el nombre de un plato:
+           <input type="text" id="plato3">            
+         </form>
+         <button onclick="fLugaresConPlato()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table3"></ul>
+         </tbody>
+       </table>
+        <div class="back3" hidden>
+          <button id="back" onclick="backForm('.Boton3','.Consulta3','.back3', '#my-table3')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
   <div class="section scrollspy" id="consulta7">
     <div class="container">
-      <h4 class="header text_b"> Top 5 de platos más caros de un lugar </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
+      <h4 class="header text_b">12. Top 5 de platos más caros de un lugar </h4>    
+      <p> Siempre hay que estar informados, sobre todo si se trata de comida. Para el que gusta de darse lujos de vez en cuando, puede buscar aquí los <strong>5 platos más caros</strong> de cualquier <strong>lugar</strong> que su bolsillo le permite costear. Advertencia, solo para estómagos exigentes. </p>
 
       <!-- <div class="ind"> -->
        <div class="Boton7">
@@ -301,118 +441,6 @@
        </div>  
     </div>
     <!--</div>-->
-  </div>
-
-  <div class="section scrollspy" id="consulta8">
-    <div class="container">
-      <h4 class="header text_b"> Top 5 de platos más caros de un restaurant </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
-
-      <!-- <div class="ind"> -->
-       <div class="Boton8">
-            <button onclick="return showForm('.Boton8','.Consulta8','.back8')" id="handle8" type="button">Haga su consulta</button>
-       </div>
-       <div class="Consulta8" hidden>
-         <form>
-           Ingrese el nombre de un restaurant
-           <input type="text" id="plato8">            
-         </form>
-         <button onclick="fplatosMasCarosPorRestaurant()">Consultar</button>
-       </div>    
-       <!-- <input type="text" id="plato2"> -->
-       <table class="overflow-y">
-         <tbody>
-           <ul id="my-table8"></ul>
-         </tbody>
-       </table>
-        <div class="back8" hidden>
-          <button id="back" onclick="backForm('.Boton8','.Consulta8','.back8', '#my-table8')" type="button">Atrás </button>
-       </div>  
-    </div>
-    <!--</div>-->
-  </div>
-
-  <div class="section scrollspy" id="consulta9">
-    <div class="container">
-      <h4 class="header text_b"> Top 5 de platos más caros de un evento </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
-
-      <!-- <div class="ind"> -->
-       <div class="Boton9">
-            <button onclick="showForm('.Boton9','.Consulta9','.back9')" id="handle9" type="button">Haga su consulta</button>
-       </div>
-       <div class="Consulta8" hidden>
-         <form>
-           Ingrese el nombre de un evento
-           <input type="text" id="plato9">            
-         </form>
-         <button onclick="fplatosMasCarosPorEvento()">Consultar</button>
-       </div>    
-       <!-- <input type="text" id="plato2"> -->
-       <table class="overflow-y">
-         <tbody>
-           <ul id="my-table9"></ul>
-         </tbody>
-       </table>
-        <div class="back9" hidden>
-          <button id="back" onclick="backForm('.Boton9','.Consulta9','.back9', '#my-table9')" type="button">Atrás </button>
-       </div>  
-    </div>
-    <!--</div>-->
-  </div>
-
-  <div class="section scrollspy" id="consulta10">
-    <div class="container">
-      <h4 class="header text_b"> Restaurantes con platos entre un rango de precios </h4>    
-      <p> Arreglar*Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Considerar que se mostraron los platos parecidos al buscado. </p>
-
-      <!-- <div class="ind"> -->
-       <div class="Boton10">
-            <button onclick="return showForm('.Boton10','.Consulta10','.back10')" id="handle6" type="button">Haga su consulta</button>
-       </div>
-       <div class="Consulta10" hidden>
-         <form>
-           Ingrese el precio mínimo
-           <input type="text" id="plato10a">
-           Ingrese el precio máximo
-           <input type="text" id="plato10b">
-         </form>
-         <button onclick="frestaurantesConPreciosPorRango()">Consultar</button>
-       </div>    
-       <!-- <input type="text" id="plato2"> -->
-       <table class="overflow-y">
-         <tbody>
-           <ul id="my-table10"></ul>
-         </tbody>
-       </table>
-        <div class="back10" hidden>
-          <button id="back" onclick="backForm('.Boton10','.Consulta10','.back10', '#my-table10')" type="button">Atrás </button>
-       </div>  
-    </div>
-    <!--</div>-->
-  </div>
-
-  <div class="section scrollspy" id="consulta11">
-    <div class="container">
-      <h4 class="header text_b"> Platos que ya no están vigentes </h4>
-      <p> Arreglar*A continuación se presenta una consulta simple 
-            sobre la <strong>cantidad de platos</strong> que posee cada restaunt.
-            Se eligieron los 10 con mayor cantidad, considerando solo platos aún disponibles desde 2016.</p>        
-      <!-- <blockquote>Consultas de Estadisticas</blockquote> -->
-      <div class="Boton11">
-        <button onclick="fplatosNoVigentes()">Consulte aquí.</button>
-      </div>
-      
-      <table class="overflow-y">
-        <tbody>
-          <ul id="my-table11"></ul>
-        </tbody>
-      </table>
-
-      <div class="back11" hidden>
-        <button id="back" onclick="backSimple('.Boton11','.back11','#my-table11')" type="button" name="button"> Atrás </button>
-      </div>
-    </div>
   </div>
  
   <footer id="contact" class="page-footer default_color scrollspy">

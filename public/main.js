@@ -4,24 +4,24 @@ function main(){
 
 //##################### 1 ####################################
 //funcion que recibe datos
-function ftest(){
-	var input = $("#nombre").val(); //input = .....; var input2 = .....
+function fNombrePlatos(){
+	var input = $("#palto12").val(); //input = .....; var input2 = .....
 	if(input != ""){
 		var datos = {
 			"name": "%"+input+"%" //agregar "a": "%" + input + "%","b": "%" + input2 + "%"
 		};
 		$.post("nombre-platos",datos,function(data){ //relacionado con food postReqData...
 			console.log(data);
-			var builder = "<tr><th> Restaurant </th></tr>";
+			var builder = "<tr> <th> Numero </th> <th>Id</th> <th>Nombre</th> </tr>";
 			for(var i=0; i<data.length; i++){
-				builder += "<tr>"+ "<td>" +data[i].name+"</td>" +"</tr>";
+				builder += "<tr> <th> #"+ (i+1) + "</th> <td>" + data[i].id + "</td> <td>" + data[i].name+ "</td> </tr>";
 			}
-			$("#mi-tabla").html(builder);
+			$("#my-table12").html(builder);
 		});
 	}
 	else{
 		console.log("Input no valido :v");
-		$("#mi-tabla").html("");
+		$("#my-table12").html("");
 	}
 }
 
@@ -64,7 +64,7 @@ function fRestaurantConPlato(){
 			console.log(data);
 			var builder = "<tr> <th> Numero </th> <th>Restaurant</th> </tr>";
 			for(var i=0; i<data.length; i++){
-				builder += "<tr> <th> #" + (i+1) + "</th> <td>" +data[i].sponsor+"</td> </tr>";
+				builder += "<tr> <th> #"+ (i+1) + "</th> <td>" + data[i].sponsor + "</td> <td>" + data[i].name+ "</td> </tr>";
 			}
 			$("#my-table2").html(builder);
 		});
