@@ -5,7 +5,7 @@ function main(){
 //##################### 1 ####################################
 //funcion que recibe datos
 function fNombrePlatos(){
-	var input = $("#palto12").val(); //input = .....; var input2 = .....
+	var input = $("#plato12").val(); //input = .....; var input2 = .....
 	if(input != ""){
 		var datos = {
 			"name": "%"+input+"%" //agregar "a": "%" + input + "%","b": "%" + input2 + "%"
@@ -62,7 +62,7 @@ function fRestaurantConPlato(){
 		};
 		$.post("restaurant-con-plato",datos,function(data){
 			console.log(data);
-			var builder = "<tr> <th> Numero </th> <th>Restaurant</th> </tr>";
+			var builder = "<tr> <th> Numero </th> <th>Restaurant</th> <th>Plato</th></tr>";
 			for(var i=0; i<data.length; i++){
 				builder += "<tr> <th> #"+ (i+1) + "</th> <td>" + data[i].sponsor + "</td> <td>" + data[i].name+ "</td> </tr>";
 			}
@@ -155,7 +155,7 @@ function fplatosParaEventoConOcasion(){
 	console.log("Llega a query seis");
 	var inputA = $("#plato6a").val();
 	var inputB = $("#plato6b").val();
-	if(input != ""){
+	if(inputA != "" && inputB != ""){
 		var datos = {
 			"event": "%"+inputA+"%",
 			"occasion": "%"+inputB+"%"
@@ -253,10 +253,10 @@ function frestaurantesConPreciosPorRango(){
 	console.log("Llega a query diez");
 	var inputA = $("#plato10a").val();
 	var inputB = $("#plato10b").val();
-	if(input != ""){
+	if(inputA != "" && inputB != ""){
 		var datos = {
-			"low_price": "%"+inputA+"%",
-			"high_price": "%"+inputB+"%"
+			"low_price": inputA,
+			"high_price": inputB
 		};
 		$.post("restaurant-por-rango-de-precios",datos,function(data){
 			console.log(data);

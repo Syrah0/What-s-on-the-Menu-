@@ -1,99 +1,510 @@
-<!-- node foodserver.js-->
-<!DOCTYPE html>
-<html lang="es">
- <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Ejemplo de HTML5">
-	<meta name="keywords" content="HTML5, CSS3, JavaScript">
-    <title>What's on the menu?</title>
-    <link rel="stylesheet" href="misestilos.css">
-    <script src="jquery.js"></script>
-    <script src="main.js"></script>
- </head>
- <body>
-    <div id="agrupar">
-		<header id="cabecera">
-			<h1>Este es el título principal del sitio web</h1>
-		</header>
-		<nav id="menu">
-			<ul>
-				<li><a href="index.html">principal</a></li>
-				<li>fotos</li>
-				<li>videos</li>
-				<li><a href="contacto.html">contacto</a></li>
-			</ul>
-		</nav>
-		<section id="seccion">
-			<article>
-				<header>
-					<hgroup>
-						<h1>Título del mensaje uno</h1>
-						<h2>Subtítulo del mensaje uno</h2>
-					</hgroup>
-					<table id="normalTable" style="width:100%">
-						<tr>
-						    <th>Name</th>
-						    <th>Surname</th>
-						    <th>Age</th>
-						  </tr>
-						  <tr>
-						    <td>Jill</td>
-						    <td>Smith</td>
-						    <td>50</td>
-						  </tr>
-						  <tr>
-						    <td>Eve</td>
-						    <td>Jackson</td>
-						    <td>94</td>
-						</tr>
-					</table> 
-					<time datetime="2011-12-10" pubdate>publicado 10-12-2011
-					</time>
-				</header>
-				Este es el texto de mi primer mensaje
-				<figure>
-					<img src="http://minkbooks.com/content/myimage.jpg">
-					<figcaption>
-					Esta es la imagen del primer mensaje
-					</figcaption>
-				</figure>
-				<footer>
-					<p>comentarios (0)</p>
-				</footer>
-			</article>
-			<article>
-				<header>
-				<hgroup>
-					<h1>Título del mensaje dos</h1>
-					<h2>Subtítulo del mensaje dos</h2>
-				</hgroup>
-				<table class="table table-striped">
-					<ul id="mi-tabla"></ul>
-				</table> 
-				<time datetime="2011-12-15" pubdate>publicado 15-12-2011
-				</time>
-				</header>
-				Este es el texto de mi segundo mensaje
-				<footer>
-					<p>comentarios (0)</p>
-				</footer>
-			</article>
-		</section>
-		<aside id="columna">
-		<blockquote>Consultas de Estadisticas</blockquote>
-		<button onclick="fTop10PlatosRestaurant()">Top10 Cantidad Platos</button>		
-		<blockquote>Consultas con Datos</blockquote>		
-		<input type="text" id="nombre">
-		<button onclick="ftest()">Nombres platos</button>
-		<button onclick="fRestaurantConPlato()">Restaurante con tal plato</button>		
-		<ul id="mi-lista"></ul>
-		</aside>
-		<footer id="pie">
-		Derechos Reservados &copy; 2010-2011
-		</footer>
-	</div>
+<!DOCTYPE html >
+<html lang="en" class="no-js">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <title>What's on the menu? </title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet" >
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
+  
+</head>
+
+<body id="top" class="scrollspy">
+
+  <!-- Pre Loader -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>   
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+   
+  </div>
+
+  <div class="navbar-fixed">
+      <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <ul id="nav-mobile" class="right side-nav">
+              <li><a href="#intro">Servicio</a></li>
+              <li><a href="#sobrePlatos">Platos</a></li>
+              <li><a href="#sobreEspeciales">Eventos</a></li>
+              <li><a href="#sobreOcasiones">Ocasiones</a></li>
+              <li><a href="#sobreRestaurant">Restaurant</a></li>
+              <li><a href="#sobreLugares">Lugares</a></li>
+              <li><a href="#contact">Sobre nosotros</a></li>              
+              <!-- <li><a href="#test">Test</a></li> -->
+               <!-- <li><a href="#" target="_blank">Free Download</a></li> -->
+            </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          </div>
+        </div>
+      </nav>
+  </div>
+
+  <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="text_h center header cd-headline letters type">
+          <span>
+          What's on the menu?
+          </span> 
+          <span class="cd-words-wrapper waiting">
+            <b class="is-visible">pizza</b>
+            <b>sushi</b>
+            <b>steak</b>
+            <b>fish</b>
+            <b>chicken</b>
+            <b>vegetarian</b>
+          </span>
+        </h1>
+      </div>
+  </div>
+
+
+  <div id="intro" class="section scrollspy">
+    <div class="container">
+      <!--   Icon Section   -->
+      <div class="row">
+         <div  class="col s12">
+            <h2 class="center header text_h2">Aquí podrás conocer cosas interesantes sobre <span class="span_h2">comida</span >, solo   tienes que consultar.</h2>
+         </div>
+         <div  class="col s12 m4 l4">
+           <div class="center promo promo-example"> 
+               <i class="mdi-maps-local-restaurant"></i><!--mdi-maps-local-bar-->
+               <h5 class="promo-caption">Consultas sobre restaurantes</h5>
+                <p class="light center">Hay consultas para saber datos sobre distintos restaurantes a lo largo del mundo. También estadisticas sobre estos restauntes. </p>
+           </div>
+         </div>
+         <div class="col s12 m4 l4">
+             <div class="center promo promo-example">
+               <i class="mdi-social-group"></i><!--mdi-maps-local-convenience-store, mdi-maps-local-pizza-->
+               <h5 class="promo-caption">Consultas sobre ocasiones y eventos</h5>
+                <p class="light center">Existen platos especiales para ciertos eventos y ocasiones. Podrias ver que platos son para comer diaramente o cuales son ideales para un aniversario.</p>
+             </div>
+         </div>
+         <div class="col s12 m4 l4">
+             <div class="center promo promo-example">
+               <i class="mdi-image-landscape"></i>
+               <h5 class="promo-caption">Consultas sobre lugares </h5>
+                <p class="light center">Como hablamos de restaurantes en todo el mundo, podemos hacer busquedas de lugares geograficos endonde se encuentran estos restaurantes.</p>
+             </div>
+         </div>    
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section scrollspy" id="sobrePlatos"> <!-- id="consulta1" -->
+    <div class="container">
+      <h4 class="header text_b"> 1. Top 10 cantidad de platos </h4>
+      <p> A continuación se presenta una consulta simple 
+            sobre la <strong>cantidad de platos</strong> que posee cada restaunt.
+            Se eligieron los 10 con mayor cantidad, considerando solo platos aún disponibles desde 2016.</p>        
+      <!-- <blockquote>Consultas de Estadisticas</blockquote> -->
+      <div class="Boton1">
+        <button onclick="fTop10PlatosRestaurant()">Consulte aquí.</button>
+      </div>
+      
+      <table class="overflow-y">
+        <tbody>
+          <ul id="my-table1"></ul>
+        </tbody>
+      </table>
+
+      <div class="back1" hidden>
+        <button id="back" onclick="backSimple('.Boton1','.back1','#my-table1')" type="button" name="button"> Atrás </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section scrollspy" id="consulta12"> 
+    <div class="container">
+      <h4 class="header text_b"> 2. Búsqueda de platos </h4>    
+      <p> Si estás buscando el <strong>nombre</strong> de un plato en especifico, podemos buscar platos parecidos a lo que buscas. Puedes ingresar un palabra en inglés (como fish o pizza) y se mostraran los platos que contengan esa palabra. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton12">
+            <button onclick="return showForm('.Boton12','.Consulta12','.back12')" id="handle12" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta12" hidden>
+         <form>
+           Ingrese el nombre de un plato:
+           <input type="text" id="plato12">            
+         </form>
+         <button onclick="fNombrePlatos()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table12"></ul>
+         </tbody>
+       </table>
+        <div class="back12" hidden>
+          <button id="back" onclick="backForm('.Boton12','.Consulta12','.back12', '#my-table12')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>  
+
+  <div class="section scrollspy" id="consulta11">
+    <div class="container">
+      <h4 class="header text_b">3. Platos que ya no están vigentes </h4>
+      <p> Existen varios platos que en el pasado deleitaron el paladar de millones de personas a lo largo del mundo. Aqui te mostramos algunos platos que ya no están <strong>vigentes</strong>.
+            Se eligieron los 10 con mayor cantidad, considerando solo platos aún disponibles desde 2016.</p>        
+      <!-- <blockquote>Consultas de Estadisticas</blockquote> -->
+      <div class="Boton11">
+        <button onclick="fplatosNoVigentes()">Consulte aquí.</button>
+      </div>
+      
+      <table class="overflow-y">
+        <tbody>
+          <ul id="my-table11"></ul>
+        </tbody>
+      </table>
+
+      <div class="back11" hidden>
+        <button id="back" onclick="backSimple('.Boton11','.back11','#my-table11')" type="button" name="button"> Atrás </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section scrollspy" id="sobreEspeciales"> <!-- id="consulta5" -->
+    <div class="container">
+      <h4 class="header text_b">4. Platos para un evento especial </h4>    
+      <p> Acá podrás consultar sobre esos platos que son perfectos para ciertos <strong>eventos</strong> particulares. Ten cuidado porque los eventos válidos se reciben en inglés. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton5">
+            <button onclick="return showForm('.Boton5','.Consulta5','.back5')" id="handle5" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta5" hidden>
+         <form>
+           Ingrese el nombre de un evento:
+           <input type="text" id="plato5">            
+         </form>
+         <button onclick="fplatosParaEvento()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table5"></ul>
+         </tbody>
+       </table>
+        <div class="back5" hidden>
+          <button id="back" onclick="backForm('.Boton5','.Consulta5','.back5', '#my-table5')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="consulta9">
+    <div class="container">
+      <h4 class="header text_b">5. Top 5 de platos más caros de un evento </h4>    
+      <p> Si no te es suficiente con tener los platos ideales para algún evento, aqui te traemos el top 5 de los platos <strong>más caros</strong> del <strong>evento</strong> que te interesa. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton9">
+            <button onclick="return showForm('.Boton9','.Consulta9','.back9')" id="handle9" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta9" hidden>
+         <form>
+           Ingrese el nombre de un evento:
+           <input type="text" id="plato9">            
+         </form>
+         <button onclick="fplatosMasCarosPorEvento()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table9"></ul>
+         </tbody>
+       </table>
+        <div class="back9" hidden>
+          <button id="back" onclick="backForm('.Boton9','.Consulta9','.back9', '#my-table9')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="sobreOcasiones"> <!--id="consulta4" -->
+    <div class="container">
+      <h4 class="header text_b">6. Platos para una ocasión especial </h4>    
+      <p> Si eres de esas personas que se fija en los pequeños detalles de la vida, sobre todo con la comida, aquì puedes buscar los platos para tu <strong>ocasión</strong> especial, aprovecha de sorprenderlos a todos (ocasiones ingresadas en inglés). </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton4">
+            <button onclick="return showForm('.Boton4','.Consulta4','.back4')" id="handle4" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta4" hidden>
+         <form>
+           Ingrese el nombre de su ocasion especial :)
+           <input type="text" id="plato4">            
+         </form>
+         <button onclick="fplatosParaOcasion()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table4"></ul>
+         </tbody>
+       </table>
+        <div class="back4" hidden>
+          <button id="back" onclick="backForm('.Boton4','.Consulta4','.back4', '#my-table4')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+  <div class="section scrollspy" id="consulta6">
+    <div class="container">
+      <h4 class="header text_b">7. Platos para un evento con una ocasion especial </h4>    
+      <p> Si no conformas lo entregado sobre eventos, ahora puedes ir más allá en la organización de eventos consultando sobre los mejores platos para tu <strong>evento con ocasión especial</strong>. ¡Qué mejor para ser el alma de la fiesta! </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton6">
+            <button onclick="return showForm('.Boton6','.Consulta6','.back6')" id="handle6" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta6" hidden>
+         <form>
+           Ingrese el nombre de un evento:
+           <input type="text" id="plato6a">
+           Ingrese el nombre de una ocasion:
+           <input type="text" id="plato6b">
+         </form>
+         <button onclick="fplatosParaEventoConOcasion()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table6"></ul>
+         </tbody>
+       </table>
+        <div class="back6" hidden>
+          <button id="back" onclick="backForm('.Boton6','.Consulta6','.back6', '#my-table6')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="sobreRestaurant"> <!-- id="consulta2"-->
+    <div class="container">
+      <h4 class="header text_b">8. Restaurantes con un plato especifico </h4>    
+      <p> Aquí podrás saber sobre los restaurantes que tienen un <strong>plato en especifico</strong>. Siempre es bueno saber donde tienen tu plato preferido. Considerar que se muestran los platos parecidos al buscado. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton2">
+            <button onclick="return showForm('.Boton2','.Consulta2','.back2')" id="handle2" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta2" hidden>
+         <form>
+           Ingrese el nombre de un plato:
+           <input type="text" id="plato2">            
+         </form>
+         <button onclick="fRestaurantConPlato()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table2"></ul>
+         </tbody>
+       </table>
+        <div class="back2" hidden>
+          <button id="back" onclick="backForm('.Boton2','.Consulta2','.back2', '#my-table2')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="consulta8">
+    <div class="container">
+      <h4 class="header text_b">9. Top 5 de platos más caros de un restaurant </h4>    
+      <p> Para el amigo o amiga que recién recibìó su paga del mes. Aproveche de proponerle ir a comer a un restaurante y pedir uno de los <strong>5 platos más caros</strong> de su lugar preferido, después de todo la amistad no tiene precio. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton8">
+            <button onclick="return showForm('.Boton8','.Consulta8','.back8')" id="handle8" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta8" hidden>
+         <form>
+           Ingrese el nombre de un restaurant:
+           <input type="text" id="plato8">            
+         </form>
+         <button onclick="fplatosMasCarosPorRestaurant()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table8"></ul>
+         </tbody>
+       </table>
+        <div class="back8" hidden>
+          <button id="back" onclick="backForm('.Boton8','.Consulta8','.back8', '#my-table8')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+    <div class="section scrollspy" id="consulta10">
+    <div class="container">
+      <h4 class="header text_b">10. Restaurantes con platos entre un rango de precios </h4>    
+      <p> Ideal para ese otro amigo o amiga que siempre llega a fin de mes con lo justo. Para los amantes de la cotización, puede consultar aquí los restaurantes que tienen platos en un <strong>rango de precios</strong> que sea de su agrado. Más vale prevenir que lamentar, sobre todo si hay comida en juego. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton10">
+            <button onclick="return showForm('.Boton10','.Consulta10','.back10')" id="handle10" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta10" hidden>
+         <form>
+           Ingrese el precio mínimo:
+           <input type="text" id="plato10a">
+           Ingrese el precio máximo:
+           <input type="text" id="plato10b">
+         </form>
+         <button onclick="frestaurantesConPreciosPorRango()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table10"></ul>
+         </tbody>
+       </table>
+        <div class="back10" hidden>
+          <button id="back" onclick="backForm('.Boton10','.Consulta10','.back10', '#my-table10')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+  <div class="section scrollspy" id="sobreLugares"> <!-- id="consulta3" -->
+    <div class="container">
+      <h4 class="header text_b">11. Platos que se sirven en un lugar especifico </h4>    
+      <p> Consulta perfecta para los trotamundos amantes de la comida. Aquí puedes consultar sobre los <strong>platos </strong> que venden en tus lugares favoritos cuando estas de paseo. ¡Que no se diga más y a buscar los mejores platos! </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton3">
+            <button onclick="return showForm('.Boton3','.Consulta3','.back3')" id="handle3" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta3" hidden>
+         <form>
+           Ingrese el nombre de un lugar:
+           <input type="text" id="plato3">            
+         </form>
+         <button onclick="fLugaresConPlato()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table3"></ul>
+         </tbody>
+       </table>
+        <div class="back3" hidden>
+          <button id="back" onclick="backForm('.Boton3','.Consulta3','.back3', '#my-table3')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+
+
+  <div class="section scrollspy" id="consulta7">
+    <div class="container">
+      <h4 class="header text_b">12. Top 5 de platos más caros de un lugar </h4>    
+      <p> Siempre hay que estar informados, sobre todo si se trata de comida. Para el que gusta de darse lujos de vez en cuando, puede buscar aquí los <strong>5 platos más caros</strong> de cualquier <strong>lugar</strong> que su bolsillo le permite costear. Advertencia, solo para estómagos exigentes. </p>
+
+      <!-- <div class="ind"> -->
+       <div class="Boton7">
+            <button onclick="return showForm('.Boton7','.Consulta7','.back7')" id="handle7" type="button">Haga su consulta</button>
+       </div>
+       <div class="Consulta7" hidden>
+         <form>
+           Ingrese el nombre de un lugar
+           <input type="text" id="plato7">            
+         </form>
+         <button onclick="fplatosMasCarosPorLugar()">Consultar</button>
+       </div>    
+       <!-- <input type="text" id="plato2"> -->
+       <table class="overflow-y">
+         <tbody>
+           <ul id="my-table7"></ul>
+         </tbody>
+       </table>
+        <div class="back7" hidden>
+          <button id="back" onclick="backForm('.Boton7','.Consulta7','.back7', '#my-table7')" type="button">Atrás </button>
+       </div>  
+    </div>
+    <!--</div>-->
+  </div>
+ 
+  <footer id="contact" class="page-footer default_color scrollspy">
+    <div class="container">  
+      <div class="row">
+
+        <div class="col l6 s12">
+          <h5 class="white-text">Sobre el proyecto</h5>
+          <p class="grey-text text-lighten-4">
+            Proyecto final del ramo CC3201 - Bases de Datos, trabajo realizado en grupo. Se pedía instalar una base de datos en un servidor dado, con cierta cantidad de tablas que vieran un tema en especifico. Se pedía hacer optimzación a estas tablas y crear vistas útiles. Finalmente había hacer una aplicación web que fuera capaz de hacer las consultas a esta base de datos.
+          </p>
+        </div>
+
+        <div class="col l3 s12">
+          <h5 class="white-text">Integrantes del grupo 17</h5>
+          <ul>
+            <li><a class="white-text" >Daniel Diomedi Pinto</a></li>
+            <li><a class="white-text" >Alexandra Ibarra</a></li>
+            <li><a class="white-text" >Elías Zelada</a></li>
+            
+            
+          </ul>
+        </div>
+
+        <div class="col l3 s12">
+          <h5 class="white-text">Cuerpo Docente </h5>
+          <ul>
+            <li><a class="white-text" >Aidan Hogan (Profesor) </a></li>
+            <li><a class="white-text" >Sebastián Ferrada (Auxiliar) </a></li>
+            <li><a class="white-text" >Hernán Sarmiento (Ayudante) </a></li>
+            <li><a class="white-text" >Ismael "Comi" Alvarez</a></li>
+          </ul>
+        </div>
+
+        <div class="col l3 s12">
+        <h5 class="white-text">Enlaces de interés </h5>
+        <ul>
+          <li><a class="white-text" href="https://github.com/elixs/What-s-on-the-Menu-">Repositorio Git con el proyecto (click aquí)</a></li>
+        </ul>
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-copyright default_color">
+      <div class="container">
+      Agradecimientos a <a class="white-text" href="">Sergio Peñafiel :)</a>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/modernizr.js"></script> <!-- Modernizr -->
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+  <script src="js/jquery.stickyheader.js"></script>
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+
 </body>
+
 </html>
-<!--
-[{"id":1,"name":"Consomme printaniere royal"},{"id":2,"name":"Chicken gumbo"},{"id":3,"name":"Tomato aux croutons"},{"id":4,"name":"Onion au gratin"},{"id":5,"name":"St. Emilion"},{"id":7,"name":"Radishes"},{"id":8,"name":"Chicken soup with rice"},{"id":9,"name":"Clam broth (cup)"},{"id":10,"name":"Cream of new asparagus, croutons"},{"id":11,"name":"Clear green turtle"},{"id":12,"name":"Striped bass saute, meuniere"},{"id":13,"name":"Anchovies"},{"id":14,"name":"Fresh lobsters in every style"},{"id":15,"name":"Celery"},{"id":16,"name":"Pim-olas"},{"id":17,"name":"Caviar"},{"id":18,"name":"Sardines"},{"id":19,"name":"India chutney"},{"id":20,"name":"Pickles"},{"id":21,"name":"English walnuts"},{"id":22,"name":"Pate de foies-gras"},{"id":23,"name":"Pomard"},{"id":24,"name":"Brook trout, mountain style"},{"id":25,"name":"Whitebait, sauce tartare"},{"id":26,"name":"Clams"},{"id":27,"name":"Oysters"},{"id":28,"name":"Claremont planked shad"},{"id":29,"name":"G. H. Mumm & Co's Extra Dry"},{"id":30,"name":"Cerealine with Milk"},{"id":31,"name":"Sliced Bananas"}]
- -->

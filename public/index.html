@@ -29,7 +29,6 @@
   <div class="navbar-fixed">
       <nav id="nav_f" class="default_color" role="navigation">
         <div class="container">
-          <div class="nav-wrapper"><a id="logo-container" href="#top" class="brand-logo">What's on the menu?</a>
             <ul id="nav-mobile" class="right side-nav">
               <li><a href="#intro">Servicio</a></li>
               <li><a href="#sobrePlatos">Platos</a></li>
@@ -210,9 +209,9 @@
 
       <!-- <div class="ind"> -->
        <div class="Boton9">
-            <button onclick="showForm('.Boton9','.Consulta9','.back9')" id="handle9" type="button">Haga su consulta</button>
+            <button onclick="return showForm('.Boton9','.Consulta9','.back9')" id="handle9" type="button">Haga su consulta</button>
        </div>
-       <div class="Consulta8" hidden>
+       <div class="Consulta9" hidden>
          <form>
            Ingrese el nombre de un evento:
            <input type="text" id="plato9">            
@@ -360,7 +359,7 @@
 
       <!-- <div class="ind"> -->
        <div class="Boton10">
-            <button onclick="return showForm('.Boton10','.Consulta10','.back10')" id="handle6" type="button">Haga su consulta</button>
+            <button onclick="return showForm('.Boton10','.Consulta10','.back10')" id="handle10" type="button">Haga su consulta</button>
        </div>
        <div class="Consulta10" hidden>
          <form>
@@ -386,8 +385,8 @@
 
   <div class="section scrollspy" id="sobreLugares"> <!-- id="consulta3" -->
     <div class="container">
-      <h4 class="header text_b">11. Lugares con un plato especifico </h4>    
-      <p> Consulta perfecta para los trotamundos amantes de la comida. Aquí puedes consultar sobre los <strong>lugares</strong> que venden ese plato que más disfrutas cuando estas de paseo. ¡Que no se diga más y a buscar los mejores lugares! </p>
+      <h4 class="header text_b">11. Platos que se sirven en un lugar especifico </h4>    
+      <p> Consulta perfecta para los trotamundos amantes de la comida. Aquí puedes consultar sobre los <strong>platos </strong> que venden en tus lugares favoritos cuando estas de paseo. ¡Que no se diga más y a buscar los mejores platos! </p>
 
       <!-- <div class="ind"> -->
        <div class="Boton3">
@@ -395,7 +394,7 @@
        </div>
        <div class="Consulta3" hidden>
          <form>
-           Ingrese el nombre de un plato:
+           Ingrese el nombre de un lugar:
            <input type="text" id="plato3">            
          </form>
          <button onclick="fLugaresConPlato()">Consultar</button>
@@ -468,17 +467,18 @@
         <div class="col l3 s12">
           <h5 class="white-text">Cuerpo Docente </h5>
           <ul>
-            <li><a class="white-text" href="">Aidan Hogan (Profesor) </a></li>
-            <li><a class="white-text" href="">Sebastián Ferrada (Auxiliar) </a></li>
-            <li><a class="white-text" href="">Hernán Sarmiento (Ayudante) </a></li>
-            <li><a class="white-text" href="">Ismael "Comi" Alvarez</a></li>
+            <li><a class="white-text" >Aidan Hogan (Profesor) </a></li>
+            <li><a class="white-text" >Sebastián Ferrada (Auxiliar) </a></li>
+            <li><a class="white-text" >Hernán Sarmiento (Ayudante) </a></li>
+            <li><a class="white-text" >Ismael "Comi" Alvarez</a></li>
           </ul>
         </div>
 
         <div class="col l3 s12">
         <h5 class="white-text">Enlaces de interés </h5>
         <ul>
-          <li><a class="white-text" href="">Repositorio Git con el proyecto (click aquí)</a></li>
+          <li><a class="white-text" href="https://github.com/elixs/What-s-on-the-Menu-">Repositorio Git con el proyecto</a></li>
+          <li><a class="white-text" href="https://www.kaggle.com/nypl/whats-on-the-menu/">Base de datos</a></li>
         </ul>
         </div>
         </div>
@@ -488,7 +488,7 @@
 
     <div class="footer-copyright default_color">
       <div class="container">
-      Made by <a class="white-text" href="">Grupo 17 :)</a>
+      Agradecimientos a <a class="white-text" href="">Sergio Peñafiel :)</a>
       </div>
     </div>
 
